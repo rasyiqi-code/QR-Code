@@ -132,7 +132,9 @@ class QR_Code_Validator_Handler {
 						<span class="qrcv-logo-icon">🔒</span>
 						<span class="qrcv-logo-text"><?php echo esc_html( $site_name ); ?></span>
 					</div>
-					<div class="qrcv-system-tag">E-Document Validation System</div>
+					<nav class="qrcv-top-nav">
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="qrcv-nav-link">🏠 Ke Beranda</a>
+					</nav>
 				</header>
 
 				<main class="qrcv-card">

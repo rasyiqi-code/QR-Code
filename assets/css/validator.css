@@ -133,17 +133,28 @@ body.admin-bar.qrcv-validation-body {
     -webkit-text-fill-color: transparent;
 }
 
-.qrcv-system-tag {
-    font-size: 11px;
+.qrcv-top-nav {
+    display: flex;
+    align-items: center;
+}
+
+.qrcv-nav-link {
+    font-size: 12px;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--qrcv-gold);
+    letter-spacing: 0.8px;
+    color: var(--qrcv-accent);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(185, 28, 28, 0.2);
+    padding: 6px 12px;
     background: transparent;
-    padding: 4px 10px;
-    border-radius: 0;
-    border: 1px solid var(--qrcv-gold);
-    opacity: 0.9;
-    font-weight: 600;
+}
+
+.qrcv-nav-link:hover {
+    color: var(--qrcv-gold);
+    border-color: var(--qrcv-gold);
+    background: rgba(212, 175, 55, 0.05);
 }
 
 /* Glassmorphism Card (Light Edition with Security Ornaments) */

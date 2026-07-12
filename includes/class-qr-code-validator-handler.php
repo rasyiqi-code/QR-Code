@@ -167,26 +167,70 @@ class QR_Code_Validator_Handler {
 								}
 								?>
 
+								<?php
+								$is_image = false;
+								$file_type = 'default';
+								$ext = 'file';
+								if ( ! empty( $file_url ) ) {
+									$ext = strtolower( pathinfo( strtok( $file_url, '?' ), PATHINFO_EXTENSION ) );
+									$img_exts = array( 'png', 'jpg', 'jpeg', 'gif', 'svg', 'webp' );
+									if ( in_array( $ext, $img_exts, true ) ) {
+										$is_image = true;
+									} else {
+										if ( in_array( $ext, array( 'pdf' ), true ) ) {
+											$file_type = 'pdf';
+										} elseif ( in_array( $ext, array( 'doc', 'docx' ), true ) ) {
+											$file_type = 'word';
+										} elseif ( in_array( $ext, array( 'xls', 'xlsx' ), true ) ) {
+											$file_type = 'excel';
+										} elseif ( in_array( $ext, array( 'zip', 'rar' ), true ) ) {
+											$file_type = 'archive';
+										}
+									}
+								}
+								?>
+
 								<!-- Representasi Berkas Dokumen & Tanda Tangan Terverifikasi -->
 								<div class="qrcv-signature-file-vault">
-									<div class="qrcv-file-preview-card">
-										<div class="qrcv-file-header">
-											<span class="qrcv-file-badge">🔒 SECURE ARCHIVE</span>
-										</div>
-										<div class="qrcv-file-icon-wrapper">
-											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="qrcv-file-icon">
-												<path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" fill="currentColor"/>
-											</svg>
-										</div>
-											<?php if ( ! empty( $file_url ) ) : 
-												$ext = pathinfo( strtok( $file_url, '?' ), PATHINFO_EXTENSION );
-												$img_exts = array( 'png', 'jpg', 'jpeg', 'gif', 'svg', 'webp' );
-												if ( in_array( strtolower( $ext ), $img_exts, true ) ) : ?>
-													<div class="qrcv-file-signature-seal">
-														<img src="<?php echo esc_url( $file_url ); ?>" alt="Tanda Tangan Terverifikasi" class="qrcv-sig-image">
-													</div>
+									<div class="qrcv-file-preview-card <?php echo $is_image ? 'qrcv-file-is-image' : ''; ?>">
+										<?php if ( $is_image ) : ?>
+											<img src="<?php echo esc_url( $file_url ); ?>" alt="Tanda Tangan Terverifikasi" class="qrcv-full-preview-image">
+										<?php else : ?>
+											<div class="qrcv-file-header">
+												<span class="qrcv-file-badge">🔒 SECURE ARCHIVE</span>
+											</div>
+											<div class="qrcv-file-icon-wrapper qrcv-file-type-<?php echo esc_attr( $file_type ); ?>">
+												<?php if ( 'pdf' === $file_type ) : ?>
+													<!-- Icon PDF -->
+													<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="qrcv-file-icon">
+														<path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 8.5H10v1H9v-1zm5.5 0h1v3h-1v-3z" fill="currentColor"/>
+													</svg>
+												<?php elseif ( 'word' === $file_type ) : ?>
+													<!-- Icon Word -->
+													<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="qrcv-file-icon">
+														<path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" fill="currentColor"/>
+													</svg>
+												<?php elseif ( 'excel' === $file_type ) : ?>
+													<!-- Icon Excel -->
+													<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="qrcv-file-icon">
+														<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-3.5 12.5h-1.5L12 11.5l-2 4H8.5l2.75-5.5L8.5 4.5H10l2 4 2-4h1.5l-2.75 5.5 2.75 5.5z" fill="currentColor"/>
+													</svg>
+												<?php elseif ( 'archive' === $file_type ) : ?>
+													<!-- Icon Archive -->
+													<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="qrcv-file-icon">
+														<path d="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6 10h-4v-2h4v2zm0-4h-4v-2h4v2z" fill="currentColor"/>
+													</svg>
+												<?php else : ?>
+													<!-- Icon File Default -->
+													<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="qrcv-file-icon">
+														<path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6z" fill="currentColor"/>
+													</svg>
 												<?php endif; ?>
-											<?php endif; ?>
+											</div>
+											<div class="qrcv-file-info-label">
+												<?php echo esc_html( strtoupper( $ext ) ); ?> DOCUMENT
+											</div>
+										<?php endif; ?>
 									</div>
 								</div>
 

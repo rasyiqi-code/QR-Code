@@ -492,37 +492,47 @@ body.admin-bar.qrcv-validation-body {
     transition: color 0.3s ease;
 }
 
-.qrcv-file-preview-card:hover .qrcv-file-icon {
-    color: var(--qrcv-gold);
+.qrcv-file-preview-card:hover .qrcv-file-icon-wrapper {
+    opacity: 0.85;
 }
 
-.qrcv-file-signature-seal {
+.qrcv-file-is-image {
+    padding: 0 !important;
+    background: #ffffff !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.qrcv-full-preview-image {
     width: 100%;
-    height: 45px;
-    background: transparent;
-    border: none;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-
-.qrcv-sig-image {
-    max-width: 90%;
-    max-height: 90%;
+    height: 100%;
     object-fit: contain;
     display: block;
-    mix-blend-mode: multiply; /* Menghilangkan background putih tanda tangan basah */
-    margin: 0 auto;
+    background: #ffffff;
 }
 
-.qrcv-file-pdf-label {
-    font-size: 9px;
+.qrcv-file-type-pdf {
+    color: #ef4444 !important;
+}
+
+.qrcv-file-type-word {
+    color: #3b82f6 !important;
+}
+
+.qrcv-file-type-excel {
+    color: #10b981 !important;
+}
+
+.qrcv-file-type-archive {
+    color: #f59e0b !important;
+}
+
+.qrcv-file-info-label {
+    font-size: 8px;
     font-weight: 800;
-    color: var(--qrcv-accent);
-    letter-spacing: 0.5px;
+    color: #94a3b8;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: -5px;
 }
 
 .qrcv-btn-file {

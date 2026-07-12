@@ -1,0 +1,185 @@
+/* ==========================================================================
+   DASHBOARD ADMIN STYLING - QR CODE GENERATOR & VALIDATOR
+   ========================================================================== */
+
+/* Styling Container Utama */
+.qrcv-admin-wrap {
+    margin: 20px 20px 0 0;
+}
+
+.qrcv-tab-wrapper {
+    margin-bottom: 20px;
+}
+
+.qrcv-tab-content {
+    background: #ffffff;
+    border: 1px solid #ccd0d4;
+    border-top: none;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+    padding: 25px;
+    min-height: 200px;
+}
+
+/* Styling Tabel Daftar QR Code */
+.qrcv-table th.column-id {
+    width: 50px;
+}
+
+.qrcv-table th.column-qr {
+    width: 90px;
+}
+
+.qrcv-table th.column-status {
+    width: 120px;
+}
+
+.qrcv-table th.column-date {
+    width: 150px;
+}
+
+.qrcv-table th.column-actions {
+    width: 280px;
+}
+
+/* Pratinjau QR Code di Tabel */
+.qrcv-table-qr-preview {
+    width: 60px;
+    height: 60px;
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    padding: 3px;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qrcv-table-qr-preview svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* UUID Code Font di Tabel */
+.qrcv-table-uuid {
+    display: block;
+    font-family: monospace;
+    font-size: 11px;
+    color: #555555;
+    background: #f0f0f1;
+    padding: 1px 5px;
+    border-radius: 3px;
+    margin-top: 5px;
+    width: fit-content;
+}
+
+/* Lencana Status */
+.qrcv-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.badge-success {
+    background-color: #e6f4ea;
+    color: #137333;
+    border: 1px solid #ceead6;
+}
+
+.badge-warning {
+    background-color: #fef7e0;
+    color: #b06000;
+    border: 1px solid #feebc8;
+}
+
+.badge-danger {
+    background-color: #fce8e6;
+    color: #c5221f;
+    border: 1px solid #fad2cf;
+}
+
+/* Wrapper Aksi Tombol di Tabel */
+.qrcv-actions-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+}
+
+.qrcv-actions-wrapper .button {
+    font-size: 11px;
+    height: 26px;
+    line-height: 24px;
+    padding: 0 8px;
+}
+
+.qrcv-actions-wrapper .qrcv-delete-btn:hover {
+    background: #c5221f !important;
+    border-color: #c5221f !important;
+    color: #ffffff !important;
+}
+
+/* Toolbar Toolbar (Pencarian) */
+.qrcv-list-toolbar {
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.qrcv-list-toolbar .search-box {
+    margin: 0;
+}
+
+/* Styling Form Input (Tambah / Edit) */
+.qrcv-form-container {
+    max-width: 800px;
+}
+
+.qrcv-form-container h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.qrcv-form-table th {
+    font-weight: 600;
+    width: 220px;
+}
+
+.qrcv-form-table .required {
+    color: #d93025;
+}
+
+/* Styling Metadata Kolom Dinamis */
+#qrcv-meta-fields-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 600px;
+}
+
+.qrcv-meta-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.qrcv-meta-row .meta-input {
+    flex: 1;
+    height: 30px;
+}
+
+.qrcv-meta-row .qrcv-remove-meta-btn {
+    color: #d93025;
+    border-color: #d93025;
+}
+
+.qrcv-meta-row .qrcv-remove-meta-btn:hover {
+    background: #fce8e6;
+    color: #a51d24;
+    border-color: #a51d24;
+}

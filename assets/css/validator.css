@@ -144,7 +144,7 @@ body.admin-bar.qrcv-validation-body {
     text-transform: uppercase;
     letter-spacing: 0.8px;
     color: var(--qrcv-accent);
-    text-decoration: none;
+    text-decoration: none !important;
     transition: all 0.3s ease;
     border: 1px solid rgba(185, 28, 28, 0.2);
     padding: 6px 12px;
@@ -155,6 +155,7 @@ body.admin-bar.qrcv-validation-body {
     color: var(--qrcv-gold);
     border-color: var(--qrcv-gold);
     background: rgba(212, 175, 55, 0.05);
+    text-decoration: none !important;
 }
 
 /* Glassmorphism Card (Light Edition with Security Ornaments) */

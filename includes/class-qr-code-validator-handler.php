@@ -229,7 +229,6 @@ class QR_Code_Validator_Handler {
 
 				<footer class="qrcv-footer">
 					<p>&copy; <?php echo esc_html( date( 'Y' ) ); ?> <?php echo esc_html( $site_name ); ?>. Hak Cipta Dilindungi.</p>
-					<p class="footer-note">Halaman ini dihasilkan secara otomatis oleh sistem validasi enkripsi tanda tangan digital.</p>
 				</footer>
 			</div>
 			<?php wp_footer(); ?>

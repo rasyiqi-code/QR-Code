@@ -263,7 +263,7 @@ class QR_Code_Admin {
 							<td class="column-date"><?php echo esc_html( date_i18n( get_option( 'date_format' ) . ' H:i', strtotime( $item['created_at'] ) ) ); ?></td>
 							<td class="column-actions">
 								<div class="qrcv-actions-wrapper">
-									<a href="<?php echo esc_url( wp_nonce_url( add_query_arg( array( 'action' => 'download', 'uuid' => $item['uuid'], 'title' => $item['title'] ), admin_url( 'admin-init.php' ) ), 'qrcv_download_qr_' . $item['uuid'] ) ); ?>" class="button button-small" title="Download QR Code (SVG)">
+									<a href="<?php echo esc_url( wp_nonce_url( add_query_arg( array( 'page' => 'qr-code-generator', 'action' => 'download', 'uuid' => $item['uuid'], 'title' => $item['title'] ), admin_url( 'admin.php' ) ), 'qrcv_download_qr_' . $item['uuid'] ) ); ?>" class="button button-small" title="Download QR Code (SVG)">
 										📥 Download
 									</a>
 									<button class="button button-small qrcv-copy-btn" data-link="<?php echo esc_url( $validation_url ); ?>" title="Salin URL Validasi">

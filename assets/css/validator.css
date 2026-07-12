@@ -56,7 +56,7 @@ body.admin-bar.qrcv-validation-body {
 .qrcv-layout-container {
     display: flex;
     gap: 25px;
-    align-items: flex-start;
+    align-items: stretch;
     text-align: left;
     width: 100%;
 }
@@ -75,6 +75,8 @@ body.admin-bar.qrcv-validation-body {
 .qrcv-layout-main {
     flex: 1;
     min-width: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Responsive adjustments */
@@ -298,9 +300,9 @@ body.admin-bar.qrcv-validation-body {
 .qrcv-details-subtitle {
     color: #64748b;
     font-size: 11px;
-    margin-top: 15px;
+    margin-top: auto !important; /* Mendorong teks secara otomatis sejajar ke batas bawah */
     margin-bottom: 0;
-    padding-top: 10px;
+    padding-top: 15px;
     border-top: 1px solid rgba(0, 0, 0, 0.04);
     font-style: italic;
     opacity: 0.85;

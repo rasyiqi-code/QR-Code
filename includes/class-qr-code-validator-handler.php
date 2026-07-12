@@ -138,68 +138,87 @@ class QR_Code_Validator_Handler {
 				</header>
 
 				<main class="qrcv-card">
-					<!-- Visual Status Lencana -->
-					<div class="qrcv-status-badge <?php echo esc_attr( $status_class ); ?>">
-						<div class="status-badge-glow"></div>
-						<div class="status-badge-inner">
-							<span class="status-icon"><?php echo esc_html( $status_icon ); ?></span>
-						</div>
-					</div>
-
-					<h1 class="qrcv-status-title <?php echo esc_attr( $status_class . '-text' ); ?>">
-						<?php echo esc_html( $status_label ); ?>
-					</h1>
-
 					<?php if ( $data ) : ?>
-						<p class="qrcv-subtitle">Informasi keaslian dokumen resmi telah terverifikasi oleh sistem.</p>
-						
-						<!-- Segel Keamanan Hologram -->
-						<div class="qrcv-hologram-container">
-							<div class="qrcv-hologram-seal">
-								<?php echo QR_Code_Generator::generate_svg( $data['uuid'], 'M' ); ?>
-							</div>
-						</div>
-
-						<div class="qrcv-details-section">
-							<h3 class="section-title">Detail Dokumen</h3>
-							<div class="detail-row">
-								<div class="detail-label">Nama/Judul Dokumen</div>
-								<div class="detail-value text-highlight"><?php echo esc_html( $data['title'] ); ?></div>
-							</div>
-							<div class="detail-row">
-								<div class="detail-label">ID Token Validasi</div>
-								<div class="detail-value code-font"><?php echo esc_html( $data['uuid'] ); ?></div>
-							</div>
-							<div class="detail-row">
-								<div class="detail-label">Tanggal Rilis</div>
-								<div class="detail-value"><?php echo esc_html( date_i18n( get_option( 'date_format' ) . ' H:i', strtotime( $data['created_at'] ) ) ); ?></div>
-							</div>
-							<div class="detail-row">
-								<div class="detail-label">Keterangan / Deskripsi</div>
-								<div class="detail-value"><?php echo wp_kses_post( nl2br( $data['description'] ) ); ?></div>
-							</div>
-						</div>
-
-						<?php if ( ! empty( $metadata ) ) : ?>
-							<div class="qrcv-details-section">
-								<h3 class="section-title">Informasi Tambahan</h3>
-								<?php foreach ( $metadata as $meta ) : ?>
-									<?php if ( empty( $meta['key'] ) || empty( $meta['value'] ) ) continue; ?>
-									<div class="detail-row">
-										<div class="detail-label"><?php echo esc_html( $meta['key'] ); ?></div>
-										<div class="detail-value"><?php echo esc_html( $meta['value'] ); ?></div>
+						<div class="qrcv-layout-container">
+							<!-- Kolom Kiri: Status & Segel Hologram -->
+							<div class="qrcv-layout-sidebar">
+								<!-- Visual Status Lencana -->
+								<div class="qrcv-status-badge <?php echo esc_attr( $status_class ); ?>">
+									<div class="status-badge-glow"></div>
+									<div class="status-badge-inner">
+										<span class="status-icon"><?php echo esc_html( $status_icon ); ?></span>
 									</div>
-								<?php endforeach; ?>
-							</div>
-						<?php endif; ?>
+								</div>
 
-						<div class="qrcv-actions">
-							<button onclick="window.print()" class="btn btn-primary">
-								<span class="btn-icon">🖨️</span> Cetak Bukti Validitas
-							</button>
+								<h1 class="qrcv-status-title <?php echo esc_attr( $status_class . '-text' ); ?>">
+									<?php echo esc_html( $status_label ); ?>
+								</h1>
+
+								<p class="qrcv-subtitle">Informasi keaslian dokumen resmi telah terverifikasi oleh sistem.</p>
+
+								<!-- Segel Keamanan Hologram -->
+								<div class="qrcv-hologram-container">
+									<div class="qrcv-hologram-seal">
+										<?php echo QR_Code_Generator::generate_svg( $data['uuid'], 'M' ); ?>
+									</div>
+								</div>
+
+								<div class="qrcv-actions">
+									<button onclick="window.print()" class="btn btn-primary">
+										<span class="btn-icon">🖨️</span> Cetak Bukti Validitas
+									</button>
+								</div>
+							</div>
+
+							<!-- Kolom Kanan: Detail Dokumen -->
+							<div class="qrcv-layout-main">
+								<div class="qrcv-details-section">
+									<h3 class="section-title">Detail Dokumen</h3>
+									<div class="detail-row">
+										<div class="detail-label">Nama/Judul Dokumen</div>
+										<div class="detail-value text-highlight"><?php echo esc_html( $data['title'] ); ?></div>
+									</div>
+									<div class="detail-row">
+										<div class="detail-label">ID Token Validasi</div>
+										<div class="detail-value code-font"><?php echo esc_html( $data['uuid'] ); ?></div>
+									</div>
+									<div class="detail-row">
+										<div class="detail-label">Tanggal Rilis</div>
+										<div class="detail-value"><?php echo esc_html( date_i18n( get_option( 'date_format' ) . ' H:i', strtotime( $data['created_at'] ) ) ); ?></div>
+									</div>
+									<div class="detail-row">
+										<div class="detail-label">Keterangan / Deskripsi</div>
+										<div class="detail-value"><?php echo wp_kses_post( nl2br( $data['description'] ) ); ?></div>
+									</div>
+								</div>
+
+								<?php if ( ! empty( $metadata ) ) : ?>
+									<div class="qrcv-details-section">
+										<h3 class="section-title">Informasi Tambahan</h3>
+										<?php foreach ( $metadata as $meta ) : ?>
+											<?php if ( empty( $meta['key'] ) || empty( $meta['value'] ) ) continue; ?>
+											<div class="detail-row">
+												<div class="detail-label"><?php echo esc_html( $meta['key'] ); ?></div>
+												<div class="detail-value"><?php echo esc_html( $meta['value'] ); ?></div>
+											</div>
+										<?php endforeach; ?>
+									</div>
+								<?php endif; ?>
+							</div>
+						</div>
+					<?php else : ?>
+						<!-- Visual Status Lencana untuk Error -->
+						<div class="qrcv-status-badge <?php echo esc_attr( $status_class ); ?>">
+							<div class="status-badge-glow"></div>
+							<div class="status-badge-inner">
+								<span class="status-icon"><?php echo esc_html( $status_icon ); ?></span>
+							</div>
 						</div>
 
-					<?php else : ?>
+						<h1 class="qrcv-status-title <?php echo esc_attr( $status_class . '-text' ); ?>">
+							<?php echo esc_html( $status_label ); ?>
+						</h1>
+
 						<div class="qrcv-error-box">
 							<p><strong>Peringatan!</strong> QR Code ini tidak terdaftar dalam database kami atau tautan validasi tidak sah.</p>
 							<p>Pastikan Anda melakukan pemindaian pada QR Code resmi yang dikeluarkan oleh <strong><?php echo esc_html( $site_name ); ?></strong>.</p>

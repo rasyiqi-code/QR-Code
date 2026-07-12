@@ -259,6 +259,10 @@ class QR_Code_Validator_Handler {
 										<div class="detail-value code-font"><?php echo esc_html( $data['uuid'] ); ?></div>
 									</div>
 									<div class="detail-row">
+										<div class="detail-label">Segel Kriptografi (SHA-256)</div>
+										<div class="detail-value code-font" style="font-size: 11px; word-break: break-all;"><?php echo esc_html( hash( 'sha256', $data['uuid'] . '|' . $data['title'] . '|' . $data['created_at'] ) ); ?></div>
+									</div>
+									<div class="detail-row">
 										<div class="detail-label">Tanggal Rilis</div>
 										<div class="detail-value"><?php echo esc_html( date_i18n( get_option( 'date_format' ) . ' H:i', strtotime( $data['created_at'] ) ) ); ?></div>
 									</div>

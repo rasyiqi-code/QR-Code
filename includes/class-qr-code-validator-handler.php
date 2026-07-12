@@ -158,7 +158,6 @@ class QR_Code_Validator_Handler {
 							<div class="qrcv-hologram-seal">
 								<?php echo QR_Code_Generator::generate_svg( $data['uuid'], 'M' ); ?>
 							</div>
-							<div class="qrcv-hologram-badge">SECURITY HOLOGRAPHIC SEAL</div>
 						</div>
 
 						<div class="qrcv-details-section">

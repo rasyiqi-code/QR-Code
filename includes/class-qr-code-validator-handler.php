@@ -120,11 +120,10 @@ class QR_Code_Validator_Handler {
 			<svg width="0" height="0" style="position: absolute; width: 0; height: 0; overflow: hidden;">
 				<defs>
 					<linearGradient id="qrcv-holo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-						<stop offset="0%" stop-color="#00f2fe" />
-						<stop offset="25%" stop-color="#a855f7" />
-						<stop offset="50%" stop-color="#ff0844" />
-						<stop offset="75%" stop-color="#3b82f6" />
-						<stop offset="100%" stop-color="#00f2fe" />
+						<stop offset="0%" stop-color="#10b981" />
+						<stop offset="35%" stop-color="#06b6d4" />
+						<stop offset="70%" stop-color="#f59e0b" />
+						<stop offset="100%" stop-color="#10b981" />
 					</linearGradient>
 				</defs>
 			</svg>

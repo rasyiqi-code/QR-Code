@@ -4,8 +4,8 @@
  * Plugin URI:        https://github.com/rasyiqi/qr-code-validator
  * Description:       Sistem verifikasi & penerbitan dokumen digital mandiri berbasis QR Code offline, tanda tangan basah Media Library, dan segel kriptografi SHA-256 terenkripsi.
  * Version:           1.0.0
- * Author:            Senior Engineer
- * Author URI:        https://github.com/rasyiqi
+ * Author:            Rasyiqi
+ * Author URI:        https://crediblemark.com
  * License:           MIT
  * License URI:       https://opensource.org/licenses/MIT
  * Text Domain:       qr-code-validator

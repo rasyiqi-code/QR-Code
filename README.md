@@ -84,4 +84,4 @@ qr-code-validator/
 
 ## 📝 Lisensi
 
-Plugin ini dirilis di bawah lisensi MIT. Hak cipta dilindungi oleh pengembang senior.
+Plugin ini dirilis di bawah lisensi MIT. Hak cipta dilindungi oleh Rasyiqi | [Crediblemark.com](https://crediblemark.com).

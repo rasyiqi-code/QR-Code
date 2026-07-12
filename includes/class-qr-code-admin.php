@@ -39,7 +39,7 @@ class QR_Code_Admin {
 	}
 
 	/**
-	 * Menambahkan menu plugin ke sidebar admin WordPress.
+	 * Menambahkan menu plugin ke sidebar admin WordPress dengan ikon tameng keamanan verifikasi.
 	 */
 	public function add_admin_menu() {
 		add_menu_page(
@@ -48,7 +48,7 @@ class QR_Code_Admin {
 			'manage_options',
 			'qr-code-generator',
 			array( $this, 'render_admin_page' ),
-			'dashicons-qr',
+			'dashicons-shield-alt',
 			26
 		);
 	}

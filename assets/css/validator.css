@@ -116,8 +116,10 @@ body.admin-bar.qrcv-validation-body {
 }
 
 .qrcv-logo-icon {
-    font-size: 24px;
-    filter: drop-shadow(0 2px 4px rgba(79, 70, 229, 0.2));
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--qrcv-gold);
+    filter: drop-shadow(0 2px 4px rgba(212, 175, 55, 0.4));
 }
 
 .qrcv-logo-text {

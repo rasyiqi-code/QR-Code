@@ -268,11 +268,24 @@ class QR_Code_Validator_Handler {
 									</div>
 								</div>
 
-								<?php if ( ! empty( $metadata ) ) : ?>
+								<?php
+								$filtered_metadata = array();
+								if ( ! empty( $metadata ) ) {
+									foreach ( $metadata as $meta ) {
+										if ( empty( $meta['key'] ) || empty( $meta['value'] ) ) {
+											continue;
+										}
+										if ( strtolower( $meta['key'] ) === 'file dokumen' || strtolower( $meta['key'] ) === 'file' ) {
+											continue;
+										}
+										$filtered_metadata[] = $meta;
+									}
+								}
+								?>
+								<?php if ( ! empty( $filtered_metadata ) ) : ?>
 									<div class="qrcv-details-section">
 										<h3 class="section-title">Informasi Tambahan</h3>
-										<?php foreach ( $metadata as $meta ) : ?>
-											<?php if ( empty( $meta['key'] ) || empty( $meta['value'] ) ) continue; ?>
+										<?php foreach ( $filtered_metadata as $meta ) : ?>
 											<div class="detail-row">
 												<div class="detail-label"><?php echo esc_html( $meta['key'] ); ?></div>
 												<div class="detail-value"><?php echo esc_html( $meta['value'] ); ?></div>

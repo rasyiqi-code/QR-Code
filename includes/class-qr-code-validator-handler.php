@@ -325,7 +325,7 @@ class QR_Code_Validator_Handler {
 				</main>
 
 				<footer class="qrcv-footer">
-					<p>By <a href="https://crediblemark.com" target="_blank" rel="noopener" style="color: inherit; text-decoration: none; font-weight: 600;">Rasyiqi</a> | <a href="https://crediblemark.com" target="_blank" rel="noopener" style="color: inherit; text-decoration: none; font-weight: 600;">Crediblemark.com</a></p>
+					<p>&copy; <?php echo esc_html( date( 'Y' ) ); ?> <?php echo esc_html( $site_name ); ?>. Hak Cipta Dilindungi.</p>
 				</footer>
 			</div>
 			<?php wp_footer(); ?>

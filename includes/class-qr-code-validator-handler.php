@@ -200,10 +200,10 @@ class QR_Code_Validator_Handler {
 										<?php endforeach; ?>
 									</div>
 								<?php endif; ?>
+
+								<p class="qrcv-details-subtitle">Informasi keaslian dokumen resmi telah terverifikasi oleh sistem.</p>
 							</div>
 						</div>
-
-						<p class="qrcv-details-subtitle">Informasi keaslian dokumen resmi telah terverifikasi oleh sistem.</p>
 					<?php else : ?>
 						<!-- Visual Status Lencana untuk Error -->
 						<div class="qrcv-status-badge <?php echo esc_attr( $status_class ); ?>">

@@ -346,6 +346,92 @@ body.qrcv-validation-body {
     color: #0f172a;
 }
 
+/* Hologram Security Seal Styles */
+.qrcv-hologram-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.qrcv-hologram-seal {
+    width: 130px;
+    height: 130px;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03),
+                0 0 20px rgba(99, 102, 241, 0.05),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Kilatan Glossy Hologram */
+.qrcv-hologram-seal::after {
+    content: '';
+    position: absolute;
+    top: -150%;
+    left: -150%;
+    width: 300%;
+    height: 300%;
+    background: linear-gradient(
+        105deg,
+        transparent 45%,
+        rgba(0, 242, 254, 0.15) 48%,
+        rgba(255, 8, 68, 0.15) 50%,
+        rgba(255, 255, 255, 0.7) 52%,
+        rgba(0, 242, 254, 0.15) 55%,
+        transparent 58%
+    );
+    transform: rotate(25deg);
+    animation: holoGlare 4s infinite linear;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.qrcv-hologram-seal svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 1;
+}
+
+/* Warnai kotak-kotak QR code dengan gradien pelangi */
+.qrcv-hologram-seal svg rect {
+    fill: url(#qrcv-holo-grad) !important;
+}
+
+.qrcv-hologram-badge {
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #94a3b8;
+    background: #f8fafc;
+    padding: 3px 10px;
+    border-radius: 8px;
+    margin-top: -8px;
+    z-index: 2;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+}
+
+/* Animasi Khas Hologram */
+@keyframes holoGlare {
+    0% {
+        transform: translate(-30%, -30%) rotate(25deg);
+    }
+    100% {
+        transform: translate(30%, 30%) rotate(25deg);
+    }
+}
+
 /* Footer Styles */
 .qrcv-footer {
     text-align: center;
@@ -463,5 +549,21 @@ body.qrcv-validation-body {
         color: #000000 !important;
         padding: 0 !important;
         border: none !important;
+    }
+
+    /* Print Override for Hologram Seal */
+    .qrcv-hologram-seal {
+        box-shadow: none !important;
+        border: 1px solid #000000 !important;
+        width: 100px !important;
+        height: 100px !important;
+        background: #ffffff !important;
+        padding: 4px !important;
+    }
+    .qrcv-hologram-seal svg rect {
+        fill: #000000 !important;
+    }
+    .qrcv-hologram-seal::after, .qrcv-hologram-badge {
+        display: none !important;
     }
 }

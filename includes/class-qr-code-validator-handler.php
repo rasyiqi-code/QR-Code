@@ -116,6 +116,18 @@ class QR_Code_Validator_Handler {
 			<?php wp_head(); ?>
 		</head>
 		<body class="qrcv-validation-body">
+			<!-- SVG Definitions for Hologram Gradient -->
+			<svg width="0" height="0" style="position: absolute; width: 0; height: 0; overflow: hidden;">
+				<defs>
+					<linearGradient id="qrcv-holo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+						<stop offset="0%" stop-color="#00f2fe" />
+						<stop offset="25%" stop-color="#a855f7" />
+						<stop offset="50%" stop-color="#ff0844" />
+						<stop offset="75%" stop-color="#3b82f6" />
+						<stop offset="100%" stop-color="#00f2fe" />
+					</linearGradient>
+				</defs>
+			</svg>
 			<div class="qrcv-page-container">
 				<header class="qrcv-header">
 					<div class="qrcv-logo">
@@ -141,6 +153,14 @@ class QR_Code_Validator_Handler {
 					<?php if ( $data ) : ?>
 						<p class="qrcv-subtitle">Informasi keaslian dokumen resmi telah terverifikasi oleh sistem.</p>
 						
+						<!-- Segel Keamanan Hologram -->
+						<div class="qrcv-hologram-container">
+							<div class="qrcv-hologram-seal">
+								<?php echo QR_Code_Generator::generate_svg( $data['uuid'], 'M' ); ?>
+							</div>
+							<div class="qrcv-hologram-badge">SECURITY HOLOGRAPHIC SEAL</div>
+						</div>
+
 						<div class="qrcv-details-section">
 							<h3 class="section-title">Detail Dokumen</h3>
 							<div class="detail-row">

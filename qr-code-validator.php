@@ -1,13 +1,17 @@
 <?php
 /**
- * Plugin Name: QR Code Generator & Validator
- * Plugin URI:  https://github.com/rasyiqi/qr-code-validator
- * Description: Plugin untuk men-generate QR Code secara lokal dan memvalidasi keaslian dokumen melalui halaman bukti validitas khusus di WordPress.
- * Version:     1.0.0
- * Author:      Senior Engineer
- * Author URI:  https://github.com/rasyiqi
- * License:     MIT
- * Text Domain: qr-code-validator
+ * Plugin Name:       QR Code Generator & Secure Validator
+ * Plugin URI:        https://github.com/rasyiqi/qr-code-validator
+ * Description:       Sistem verifikasi & penerbitan dokumen digital mandiri berbasis QR Code offline, tanda tangan basah Media Library, dan segel kriptografi SHA-256 terenkripsi.
+ * Version:           1.0.0
+ * Author:            Senior Engineer
+ * Author URI:        https://github.com/rasyiqi
+ * License:           MIT
+ * License URI:       https://opensource.org/licenses/MIT
+ * Text Domain:       qr-code-validator
+ * Domain Path:       /languages
+ * Requires PHP:      7.4
+ * Requires at least: 5.6
  *
  * @package QR_Code_Validator
  */

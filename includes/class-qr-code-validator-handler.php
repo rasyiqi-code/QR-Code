@@ -188,8 +188,6 @@ class QR_Code_Validator_Handler {
 									</div>
 								</div>
 
-								<p class="qrcv-details-subtitle">Informasi keaslian dokumen resmi telah terverifikasi oleh sistem.</p>
-
 								<?php if ( ! empty( $metadata ) ) : ?>
 									<div class="qrcv-details-section">
 										<h3 class="section-title">Informasi Tambahan</h3>
@@ -204,6 +202,8 @@ class QR_Code_Validator_Handler {
 								<?php endif; ?>
 							</div>
 						</div>
+
+						<p class="qrcv-details-subtitle">Informasi keaslian dokumen resmi telah terverifikasi oleh sistem.</p>
 					<?php else : ?>
 						<!-- Visual Status Lencana untuk Error -->
 						<div class="qrcv-status-badge <?php echo esc_attr( $status_class ); ?>">

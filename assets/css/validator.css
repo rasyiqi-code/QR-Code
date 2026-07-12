@@ -293,6 +293,18 @@ body.admin-bar.qrcv-validation-body {
     z-index: 1;
 }
 
+.qrcv-details-subtitle {
+    color: #64748b;
+    font-size: 12px;
+    margin-top: -4px;
+    margin-bottom: 16px;
+    font-style: italic;
+    opacity: 0.85;
+    position: relative;
+    z-index: 1;
+    display: block;
+}
+
 /* Error/Warn Info Box */
 .qrcv-error-box {
     background: rgba(239, 68, 68, 0.04);

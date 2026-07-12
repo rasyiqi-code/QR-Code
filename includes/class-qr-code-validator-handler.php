@@ -152,8 +152,6 @@ class QR_Code_Validator_Handler {
 									<?php echo esc_html( $status_label ); ?>
 								</h1>
 
-								<p class="qrcv-subtitle">Informasi keaslian dokumen resmi telah terverifikasi oleh sistem.</p>
-
 								<!-- Segel Keamanan Hologram -->
 								<div class="qrcv-hologram-container">
 									<div class="qrcv-hologram-seal">
@@ -189,6 +187,8 @@ class QR_Code_Validator_Handler {
 										<div class="detail-value"><?php echo wp_kses_post( nl2br( $data['description'] ) ); ?></div>
 									</div>
 								</div>
+
+								<p class="qrcv-details-subtitle">Informasi keaslian dokumen resmi telah terverifikasi oleh sistem.</p>
 
 								<?php if ( ! empty( $metadata ) ) : ?>
 									<div class="qrcv-details-section">

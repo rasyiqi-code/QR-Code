@@ -519,17 +519,21 @@ body.admin-bar.qrcv-validation-body {
     opacity: 0.85;
 }
 
-.qrcv-seal-label {
-    font-size: 7px;
-    font-weight: 700;
-    color: var(--qrcv-accent); /* Merah marun */
+.qrcv-sig-image {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    display: block;
+    mix-blend-mode: multiply; /* Menghilangkan background putih tanda tangan basah */
+    margin: 0 auto;
+}
+
+.qrcv-file-pdf-label {
+    font-size: 9px;
+    font-weight: 800;
+    color: var(--qrcv-accent);
     letter-spacing: 0.5px;
-    position: relative;
-    z-index: 2;
-    background: rgba(255, 255, 255, 0.95);
-    padding: 1px 4px;
-    border-radius: 0;
-    border: 1px solid rgba(185, 28, 28, 0.1);
+    text-transform: uppercase;
 }
 
 .qrcv-btn-file {

@@ -179,10 +179,19 @@ class QR_Code_Validator_Handler {
 											</svg>
 										</div>
 										<div class="qrcv-file-signature-seal">
-											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50" class="qrcv-sig-stroke">
-												<path d="M10 35 C 25 15, 35 45, 50 25 C 65 15, 75 42, 90 20" fill="none" stroke="var(--qrcv-accent)" stroke-width="3" stroke-linecap="round" />
-												<path d="M15 40 C 35 30, 55 45, 85 25" fill="none" stroke="var(--qrcv-gold)" stroke-width="2" stroke-linecap="round" />
-											</svg>
+											<?php if ( ! empty( $file_url ) ) : 
+												$ext = pathinfo( strtok( $file_url, '?' ), PATHINFO_EXTENSION );
+												$img_exts = array( 'png', 'jpg', 'jpeg', 'gif', 'svg', 'webp' );
+												if ( in_array( strtolower( $ext ), $img_exts, true ) ) : ?>
+													<img src="<?php echo esc_url( $file_url ); ?>" alt="Tanda Tangan Terverifikasi" class="qrcv-sig-image">
+												<?php else : ?>
+													<span class="qrcv-file-pdf-label">📄 PDF File</span>
+												<?php endif; ?>
+											<?php else : ?>
+												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50" class="qrcv-sig-stroke">
+													<path d="M20 30 C 40 20, 60 40, 80 20" fill="none" stroke="rgba(0,0,0,0.05)" stroke-width="2" stroke-linecap="round" />
+												</svg>
+											<?php endif; ?>
 										</div>
 									</div>
 								</div>

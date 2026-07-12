@@ -113,8 +113,9 @@ class QR_Code_Validator_Handler {
 			<title><?php esc_html_e( 'Verifikasi QR Code Dokumen', 'qr-code-validator' ); ?> | <?php echo esc_html( $site_name ); ?></title>
 			<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 			<link rel="stylesheet" href="<?php echo esc_url( $css_url ); ?>" type="text/css" media="all">
+			<?php wp_head(); ?>
 		</head>
-		<body>
+		<body class="qrcv-validation-body">
 			<div class="qrcv-page-container">
 				<header class="qrcv-header">
 					<div class="qrcv-logo">
@@ -195,6 +196,7 @@ class QR_Code_Validator_Handler {
 					<p class="footer-note">Halaman ini dihasilkan secara otomatis oleh sistem validasi enkripsi tanda tangan digital.</p>
 				</footer>
 			</div>
+			<?php wp_footer(); ?>
 		</body>
 		</html>
 		<?php

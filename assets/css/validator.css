@@ -468,13 +468,13 @@ body.admin-bar.qrcv-validation-body {
 }
 
 .qrcv-file-badge {
-    font-size: 7px;
+    font-size: 8px;
     font-weight: 800;
-    color: var(--qrcv-gold);
-    background: var(--qrcv-black);
-    padding: 2px 6px;
+    color: var(--qrcv-accent);
+    background: transparent;
+    padding: 0;
     border-radius: 0;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.8px;
     text-transform: uppercase;
 }
 

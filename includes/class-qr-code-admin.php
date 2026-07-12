@@ -73,12 +73,12 @@ class QR_Code_Admin {
 			}
 		}
 
-		// Aksi Download SVG
+		// Aksi Download PNG
 		if ( 'download' === $action ) {
 			$uuid = isset( $_GET['uuid'] ) ? sanitize_text_field( wp_unslash( $_GET['uuid'] ) ) : '';
 			$title = isset( $_GET['title'] ) ? sanitize_title( wp_unslash( $_GET['title'] ) ) : 'qr-code';
 			if ( $uuid && check_admin_referer( 'qrcv_download_qr_' . $uuid ) ) {
-				QR_Code_Generator::download_svg( $uuid, $title );
+				QR_Code_Generator::download_png( $uuid, $title );
 				exit;
 			}
 		}
@@ -276,7 +276,7 @@ class QR_Code_Admin {
 							<td class="column-date"><?php echo esc_html( date_i18n( get_option( 'date_format' ) . ' H:i', strtotime( $item['created_at'] ) ) ); ?></td>
 							<td class="column-actions">
 								<div class="qrcv-actions-wrapper">
-									<a href="<?php echo esc_url( wp_nonce_url( add_query_arg( array( 'page' => 'qr-code-generator', 'action' => 'download', 'uuid' => $item['uuid'], 'title' => $item['title'] ), admin_url( 'admin.php' ) ), 'qrcv_download_qr_' . $item['uuid'] ) ); ?>" class="button button-small" title="Download QR Code (SVG)">
+									<a href="<?php echo esc_url( wp_nonce_url( add_query_arg( array( 'page' => 'qr-code-generator', 'action' => 'download', 'uuid' => $item['uuid'], 'title' => $item['title'] ), admin_url( 'admin.php' ) ), 'qrcv_download_qr_' . $item['uuid'] ) ); ?>" class="button button-small" title="Download QR Code (PNG)">
 										📥 Download
 									</a>
 									<button class="button button-small qrcv-copy-btn" data-link="<?php echo esc_url( $validation_url ); ?>" title="Salin URL Validasi">

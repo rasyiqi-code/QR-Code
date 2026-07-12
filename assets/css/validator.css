@@ -3,7 +3,7 @@
    ========================================================================== */
 
 :root {
-    --qrcv-accent: var(--wp--preset--color--primary, var(--wp--preset--color--accent, #b91c1c)); /* Merah Marun */
+    --qrcv-accent: #b91c1c; /* Merah Marun Solid untuk menjamin kontras */
     --qrcv-gold: #d4af37; /* Emas Logam */
     --qrcv-black: #0f172a; /* Hitam Logam */
     --qrcv-accent-gradient: linear-gradient(135deg, var(--qrcv-accent) 0%, var(--qrcv-black) 100%);
@@ -367,13 +367,14 @@ body.admin-bar.qrcv-validation-body {
 
 .code-font {
     font-family: 'Courier New', Courier, monospace;
-    color: var(--qrcv-accent);
-    background: rgba(185, 28, 28, 0.03);
-    border: 1px solid rgba(212, 175, 55, 0.15);
-    padding: 2px 6px;
+    color: #0f172a !important; /* Hitam pekat agar terbaca tajam */
+    background: #f1f5f9; /* Latar belakang abu-abu terang agar kontras */
+    border: 1px solid rgba(185, 28, 28, 0.15);
+    padding: 4px 8px;
     border-radius: 0;
     font-size: 13px;
     display: inline-block;
+    letter-spacing: 0.5px;
 }
 
 /* Actions & Buttons (Square Icons) */

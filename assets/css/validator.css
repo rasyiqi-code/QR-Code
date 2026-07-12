@@ -376,21 +376,25 @@ body.admin-bar.qrcv-validation-body {
     display: inline-block;
 }
 
-/* Actions & Buttons */
+/* Actions & Buttons (Square Icons) */
 .qrcv-actions {
     margin-top: 15px;
     display: flex;
     justify-content: center;
+    gap: 12px;
     position: relative;
     z-index: 1;
+    width: 100%;
 }
 
 .btn {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 10px 24px;
-    font-size: 14px;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    padding: 0 !important;
+    font-size: 16px;
     font-weight: 600;
     border-radius: 0;
     cursor: pointer;

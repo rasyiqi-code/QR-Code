@@ -236,12 +236,12 @@ class QR_Code_Validator_Handler {
 
 								<div class="qrcv-actions">
 									<?php if ( ! empty( $file_url ) ) : ?>
-										<a href="<?php echo esc_url( $file_url ); ?>" target="_blank" class="btn btn-secondary qrcv-btn-file" style="margin-bottom: 10px; width: 100%; justify-content: center;">
-											📂 Buka Berkas Dokumen
+										<a href="<?php echo esc_url( $file_url ); ?>" target="_blank" class="btn btn-secondary qrcv-btn-file" title="<?php esc_attr_e( 'Buka Berkas Dokumen', 'qr-code-validator' ); ?>">
+											📂
 										</a>
 									<?php endif; ?>
-									<button onclick="window.print()" class="btn btn-primary" style="width: 100%; justify-content: center;">
-										<span class="btn-icon">🖨️</span> Cetak Bukti Validitas
+									<button onclick="window.print()" class="btn btn-primary" title="<?php esc_attr_e( 'Cetak Bukti Validitas', 'qr-code-validator' ); ?>">
+										🖨️
 									</button>
 								</div>
 							</div>

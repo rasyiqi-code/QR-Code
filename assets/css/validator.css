@@ -24,7 +24,7 @@ body.qrcv-validation-body {
     align-items: center !important;
     padding: 20px !important;
     overflow-x: hidden !important;
-    line-height: 1.6 !important;
+    line-height: 1.5 !important;
 }
 
 /* Page Container & Layout */
@@ -33,7 +33,7 @@ body.qrcv-validation-body {
     max-width: 1000px;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 15px;
     animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
@@ -47,14 +47,14 @@ body.qrcv-validation-body {
 }
 
 .qrcv-layout-sidebar {
-    flex: 0 0 320px;
-    width: 320px;
+    flex: 0 0 300px;
+    width: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     border-right: 1px solid rgba(0, 0, 0, 0.05);
-    padding-right: 40px;
+    padding-right: 30px;
 }
 
 .qrcv-layout-main {
@@ -137,7 +137,7 @@ body.qrcv-validation-body {
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 
                 0 10px 10px -5px rgba(0, 0, 0, 0.02),
                 inset 0 1px 0 rgba(255, 255, 255, 0.8);
-    padding: 40px 30px;
+    padding: 24px 30px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -157,10 +157,10 @@ body.qrcv-validation-body {
 
 /* Status Badge Styles & Glow Effects */
 .qrcv-status-badge {
-    width: 90px;
-    height: 90px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
-    margin: 0 auto 25px;
+    margin: 0 auto 15px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -169,13 +169,13 @@ body.qrcv-validation-body {
 }
 
 .status-badge-inner {
-    width: 76px;
-    height: 76px;
+    width: 58px;
+    height: 58px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 36px;
+    font-size: 28px;
     font-weight: bold;
     z-index: 2;
 }
@@ -231,10 +231,10 @@ body.qrcv-validation-body {
 
 /* Typography & Titles */
 .qrcv-status-title {
-    font-size: 26px;
+    font-size: 22px;
     font-weight: 800;
     letter-spacing: -0.5px;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     position: relative;
     z-index: 1;
 }
@@ -254,8 +254,8 @@ body.qrcv-validation-body {
 
 .qrcv-subtitle {
     color: #64748b;
-    font-size: 14px;
-    margin-bottom: 30px;
+    font-size: 13px;
+    margin-bottom: 15px;
     position: relative;
     z-index: 1;
 }
@@ -289,29 +289,29 @@ body.qrcv-validation-body {
     background: rgba(248, 250, 252, 0.8);
     border-radius: 18px;
     border: 1px solid rgba(0, 0, 0, 0.05);
-    padding: 25px;
+    padding: 18px 20px;
     text-align: left;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     position: relative;
     z-index: 1;
 }
 
 .section-title {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: var(--qrcv-accent);
-    margin-bottom: 18px;
+    margin-bottom: 12px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-    padding-bottom: 8px;
+    padding-bottom: 6px;
 }
 
 .detail-row {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    margin-bottom: 16px;
+    gap: 2px;
+    margin-bottom: 10px;
 }
 
 .detail-row:last-child {
@@ -352,7 +352,7 @@ body.qrcv-validation-body {
 
 /* Actions & Buttons */
 .qrcv-actions {
-    margin-top: 30px;
+    margin-top: 15px;
     display: flex;
     justify-content: center;
     position: relative;
@@ -363,8 +363,8 @@ body.qrcv-validation-body {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 12px 28px;
-    font-size: 15px;
+    padding: 10px 24px;
+    font-size: 14px;
     font-weight: 600;
     border-radius: 12px;
     cursor: pointer;
@@ -400,17 +400,17 @@ body.qrcv-validation-body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     position: relative;
     z-index: 1;
 }
 
 .qrcv-hologram-seal {
-    width: 130px;
-    height: 130px;
+    width: 100px;
+    height: 100px;
     background: #ffffff;
-    border-radius: 20px;
-    padding: 10px;
+    border-radius: 16px;
+    padding: 8px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03),
                 0 0 20px rgba(99, 102, 241, 0.05),
                 inset 0 0 0 1px rgba(255, 255, 255, 0.8);
@@ -522,6 +522,13 @@ body.qrcv-validation-body {
 /* ==========================================================================
    PRINT STYLES (ADJUSTS DARK MODE FOR HIGH CONTRAST PHYSICAL PRINTING)
    ========================================================================== */
+/* Disable scroll on desktop viewports where content fits */
+@media (min-width: 821px) and (min-height: 650px) {
+    body.qrcv-validation-body {
+        overflow: hidden !important;
+    }
+}
+
 @media print {
     body {
         background: #ffffff !important;

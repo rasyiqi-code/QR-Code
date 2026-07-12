@@ -152,15 +152,49 @@ class QR_Code_Validator_Handler {
 									<?php echo esc_html( $status_label ); ?>
 								</h1>
 
-								<!-- Segel Keamanan Hologram -->
-								<div class="qrcv-hologram-container">
-									<div class="qrcv-hologram-seal">
-										<?php echo QR_Code_Generator::generate_svg( $data['uuid'], 'M' ); ?>
+								<?php
+								$file_url = '';
+								if ( ! empty( $metadata ) ) {
+									foreach ( $metadata as $meta ) {
+										$key_lower = strtolower( $meta['key'] );
+										if ( strpos( $key_lower, 'file' ) !== false || strpos( $key_lower, 'url' ) !== false || strpos( $key_lower, 'dokumen' ) !== false || strpos( $key_lower, 'link' ) !== false || strpos( $key_lower, 'ttd' ) !== false ) {
+											if ( filter_var( $meta['value'], FILTER_VALIDATE_URL ) ) {
+												$file_url = $meta['value'];
+												break;
+											}
+										}
+									}
+								}
+								?>
+
+								<!-- Representasi Berkas Dokumen & Tanda Tangan Terverifikasi -->
+								<div class="qrcv-signature-file-vault">
+									<div class="qrcv-file-preview-card">
+										<div class="qrcv-file-header">
+											<span class="qrcv-file-badge">🔒 SECURE ARCHIVE</span>
+										</div>
+										<div class="qrcv-file-icon-wrapper">
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="qrcv-file-icon">
+												<path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" fill="currentColor"/>
+											</svg>
+										</div>
+										<div class="qrcv-file-signature-seal">
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50" class="qrcv-sig-stroke">
+												<path d="M10 35 C 25 15, 35 45, 50 25 C 65 15, 75 42, 90 20" fill="none" stroke="var(--qrcv-accent)" stroke-width="3" stroke-linecap="round" />
+												<path d="M15 40 C 35 30, 55 45, 85 25" fill="none" stroke="var(--qrcv-gold)" stroke-width="2" stroke-linecap="round" />
+											</svg>
+											<span class="qrcv-seal-label">DIGITALLY SIGNED</span>
+										</div>
 									</div>
 								</div>
 
 								<div class="qrcv-actions">
-									<button onclick="window.print()" class="btn btn-primary">
+									<?php if ( ! empty( $file_url ) ) : ?>
+										<a href="<?php echo esc_url( $file_url ); ?>" target="_blank" class="btn btn-secondary qrcv-btn-file" style="margin-bottom: 10px; width: 100%; justify-content: center;">
+											📂 Buka Berkas Dokumen
+										</a>
+									<?php endif; ?>
+									<button onclick="window.print()" class="btn btn-primary" style="width: 100%; justify-content: center;">
 										<span class="btn-icon">🖨️</span> Cetak Bukti Validitas
 									</button>
 								</div>

@@ -134,6 +134,8 @@ class QR_Code_Loader {
 			return;
 		}
 
+		wp_enqueue_media();
+
 		wp_enqueue_style(
 			'qrcv-admin-css',
 			QRCV_URL . 'assets/css/admin.css',

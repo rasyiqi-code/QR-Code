@@ -87,18 +87,31 @@ class QR_Code_Admin {
 		if ( isset( $_POST['qrcv_save_submit'] ) ) {
 			check_admin_referer( 'qrcv_save_qr_action', 'qrcv_save_qr_nonce' );
 
-			$id          = isset( $_POST['qr_id'] ) ? (int) $_POST['qr_id'] : 0;
-			$title       = isset( $_POST['qr_title'] ) ? sanitize_text_field( wp_unslash( $_POST['qr_title'] ) ) : '';
-			$description = isset( $_POST['qr_description'] ) ? wp_kses_post( wp_unslash( $_POST['qr_description'] ) ) : '';
-			$status      = isset( $_POST['qr_status'] ) ? sanitize_text_field( wp_unslash( $_POST['qr_status'] ) ) : 'valid';
+			$id           = isset( $_POST['qr_id'] ) ? (int) $_POST['qr_id'] : 0;
+			$title        = isset( $_POST['qr_title'] ) ? sanitize_text_field( wp_unslash( $_POST['qr_title'] ) ) : '';
+			$description  = isset( $_POST['qr_description'] ) ? wp_kses_post( wp_unslash( $_POST['qr_description'] ) ) : '';
+			$status       = isset( $_POST['qr_status'] ) ? sanitize_text_field( wp_unslash( $_POST['qr_status'] ) ) : 'valid';
+			$document_url = isset( $_POST['qr_document_url'] ) ? esc_url_raw( wp_unslash( $_POST['qr_document_url'] ) ) : '';
 
 			// Format metadata
 			$meta_keys   = isset( $_POST['meta_key'] ) ? array_map( 'sanitize_text_field', wp_unslash( $_POST['meta_key'] ) ) : array();
 			$meta_values = isset( $_POST['meta_value'] ) ? array_map( 'sanitize_text_field', wp_unslash( $_POST['meta_value'] ) ) : array();
 			$metadata    = array();
 
+			// Sematkan URL Dokumen/TTD ke metadata paling pertama
+			if ( ! empty( $document_url ) ) {
+				$metadata[] = array(
+					'key'   => esc_html__( 'File Dokumen', 'qr-code-validator' ),
+					'value' => $document_url,
+				);
+			}
+
 			for ( $i = 0; $i < count( $meta_keys ); $i++ ) {
 				if ( ! empty( $meta_keys[ $i ] ) && ! empty( $meta_values[ $i ] ) ) {
+					// Hindari duplikasi File Dokumen dari inputan manual
+					if ( $meta_keys[ $i ] === esc_html__( 'File Dokumen', 'qr-code-validator' ) ) {
+						continue;
+					}
 					$metadata[] = array(
 						'key'   => $meta_keys[ $i ],
 						'value' => $meta_values[ $i ],
@@ -329,11 +342,22 @@ class QR_Code_Admin {
 		$description = $item ? $item['description'] : '';
 		$status      = $item ? $item['status'] : 'valid';
 		
-		$metadata = array();
+		$document_url = '';
+		$metadata     = array();
 		if ( $item && ! empty( $item['metadata'] ) ) {
-			$metadata = maybe_unserialize( $item['metadata'] );
-			if ( ! is_array( $metadata ) ) {
-				$metadata = json_decode( $item['metadata'], true );
+			$raw_metadata = maybe_unserialize( $item['metadata'] );
+			if ( ! is_array( $raw_metadata ) ) {
+				$raw_metadata = json_decode( $item['metadata'], true );
+			}
+			
+			if ( is_array( $raw_metadata ) ) {
+				foreach ( $raw_metadata as $meta ) {
+					if ( isset( $meta['key'] ) && $meta['key'] === esc_html__( 'File Dokumen', 'qr-code-validator' ) ) {
+						$document_url = $meta['value'];
+					} else {
+						$metadata[] = $meta;
+					}
+				}
 			}
 		}
 		?>
@@ -368,6 +392,16 @@ class QR_Code_Admin {
 								<option value="revoked" <?php selected( $status, 'revoked' ); ?>>❌ REVOKED - Dokumen Dicabut / Tidak Berlaku</option>
 							</select>
 							<p class="description">Ubah status ini secara real-time untuk membatalkan atau mengaktifkan kembali validasi QR Code.</p>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="qr_document_url">Sematkan Dokumen (File TTD/PDF)</label></th>
+						<td>
+							<div style="display: flex; gap: 8px; align-items: center;">
+								<input type="text" name="qr_document_url" id="qr_document_url" value="<?php echo esc_url( $document_url ); ?>" class="regular-text" placeholder="Pilih atau tempel URL file...">
+								<button type="button" id="qrcv-upload-btn" class="button button-secondary">📁 Pilih Berkas Media</button>
+							</div>
+							<p class="description">Pilih berkas tanda tangan digital (PNG transparan) atau dokumen sertifikat (PDF) dari Media Library WordPress Anda.</p>
 						</td>
 					</tr>
 

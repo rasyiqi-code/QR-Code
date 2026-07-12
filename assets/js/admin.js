@@ -80,4 +80,30 @@ jQuery(document).ready(function($) {
         }
     });
 
+    // WordPress Media Uploader Integration
+    var custom_uploader;
+    $('#qrcv-upload-btn').on('click', function(e) {
+        e.preventDefault();
+        
+        if (custom_uploader) {
+            custom_uploader.open();
+            return;
+        }
+        
+        custom_uploader = wp.media({
+            title: 'Pilih Dokumen / File TTD',
+            button: {
+                text: 'Sematkan Dokumen ini'
+            },
+            multiple: false
+        });
+        
+        custom_uploader.on('select', function() {
+            var attachment = custom_uploader.state().get('selection').first().toJSON();
+            $('#qr_document_url').val(attachment.url);
+        });
+        
+        custom_uploader.open();
+    });
+
 });

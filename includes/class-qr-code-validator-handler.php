@@ -183,7 +183,6 @@ class QR_Code_Validator_Handler {
 												<path d="M10 35 C 25 15, 35 45, 50 25 C 65 15, 75 42, 90 20" fill="none" stroke="var(--qrcv-accent)" stroke-width="3" stroke-linecap="round" />
 												<path d="M15 40 C 35 30, 55 45, 85 25" fill="none" stroke="var(--qrcv-gold)" stroke-width="2" stroke-linecap="round" />
 											</svg>
-											<span class="qrcv-seal-label">DIGITALLY SIGNED</span>
 										</div>
 									</div>
 								</div>

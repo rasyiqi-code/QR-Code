@@ -313,29 +313,28 @@ body.admin-bar.qrcv-validation-body {
     color: #dc2626;
 }
 
-/* Detail Sections with accent bar */
+/* Detail Sections - Flat Layout (No Container) */
 .qrcv-details-section {
-    background: rgba(248, 250, 252, 0.85);
-    border-radius: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.04);
-    border-left: 3px solid var(--qrcv-accent) !important;
-    padding: 14px 18px;
+    background: transparent !important;
+    border: none !important;
+    border-left: none !important;
+    padding: 0 !important;
     text-align: left;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
     position: relative;
     z-index: 1;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.01);
+    box-shadow: none !important;
 }
 
 .section-title {
-    font-size: 13px;
-    font-weight: 600;
+    font-size: 12px;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: var(--qrcv-accent);
     margin-bottom: 12px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-    padding-bottom: 6px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.04);
+    padding-bottom: 4px;
 }
 
 .detail-row {

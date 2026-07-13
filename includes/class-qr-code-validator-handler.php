@@ -258,11 +258,21 @@ class QR_Code_Validator_Handler {
 									</div>
 									<div class="detail-row">
 										<div class="detail-label">ID Token Validasi</div>
-										<div class="detail-value code-font"><?php echo esc_html( $data['uuid'] ); ?></div>
+										<div class="qrcv-copyable-wrapper">
+											<div class="detail-value code-font" id="qrcv-token-id"><?php echo esc_html( $data['uuid'] ); ?></div>
+											<button type="button" class="qrcv-inline-copy-btn" data-clipboard-target="#qrcv-token-id" title="Salin Token ID">
+												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="qrcv-copy-icon"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+											</button>
+										</div>
 									</div>
 									<div class="detail-row">
 										<div class="detail-label">Segel Kriptografi (SHA-256)</div>
-										<div class="detail-value code-font" style="font-size: 11px; word-break: break-all;"><?php echo esc_html( hash( 'sha256', $data['uuid'] . '|' . $data['title'] . '|' . $data['created_at'] ) ); ?></div>
+										<div class="qrcv-copyable-wrapper">
+											<div class="detail-value code-font" id="qrcv-crypto-hash" style="font-size: 11px; word-break: break-all;"><?php echo esc_html( hash( 'sha256', $data['uuid'] . '|' . $data['title'] . '|' . $data['created_at'] ) ); ?></div>
+											<button type="button" class="qrcv-inline-copy-btn" data-clipboard-target="#qrcv-crypto-hash" title="Salin Segel Kriptografi">
+												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="qrcv-copy-icon"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+											</button>
+										</div>
 									</div>
 									<div class="detail-row">
 										<div class="detail-label">Tanggal Rilis</div>
@@ -331,6 +341,56 @@ class QR_Code_Validator_Handler {
 				</footer>
 			</div>
 			<?php wp_footer(); ?>
+			<script type="text/javascript">
+				document.addEventListener('DOMContentLoaded', function() {
+					var copyButtons = document.querySelectorAll('.qrcv-inline-copy-btn');
+					copyButtons.forEach(function(btn) {
+						btn.addEventListener('click', function() {
+							var targetSelector = btn.getAttribute('data-clipboard-target');
+							var targetEl = document.querySelector(targetSelector);
+							if (!targetEl) return;
+							
+							var text = targetEl.textContent || targetEl.innerText;
+							
+							if (navigator.clipboard && navigator.clipboard.writeText) {
+								navigator.clipboard.writeText(text).then(function() {
+									showFeedback(btn);
+								}).catch(function() {
+									fallbackCopy(text, btn);
+								});
+							} else {
+								fallbackCopy(text, btn);
+							}
+						});
+					});
+					
+					function fallbackCopy(text, btn) {
+						var textarea = document.createElement('textarea');
+						textarea.value = text;
+						textarea.style.position = 'fixed';
+						textarea.style.opacity = '0';
+						document.body.appendChild(textarea);
+						textarea.select();
+						try {
+							document.execCommand('copy');
+							showFeedback(btn);
+						} catch (err) {
+							console.error('Failed to copy text', err);
+						}
+						document.body.removeChild(textarea);
+					}
+					
+					function showFeedback(btn) {
+						var originalHTML = btn.innerHTML;
+						btn.innerHTML = '<span style="color: #10b981; font-size: 11px; font-weight: bold;">✔️ Copied!</span>';
+						btn.classList.add('copied');
+						setTimeout(function() {
+							btn.innerHTML = originalHTML;
+							btn.classList.remove('copied');
+						}, 1800);
+					}
+				});
+			</script>
 		</body>
 		</html>
 		<?php

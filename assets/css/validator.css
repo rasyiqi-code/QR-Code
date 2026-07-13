@@ -17,29 +17,25 @@
 }
 
 html {
-    overflow: hidden !important;
-    height: 100% !important;
+    overflow-y: auto !important;
+    height: auto !important;
 }
 
 body.qrcv-validation-body {
     font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
     background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
     color: #334155 !important;
-    height: 100vh !important;
     min-height: 100vh !important;
-    max-height: 100vh !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    padding: 20px !important;
-    overflow: hidden !important;
+    padding: 40px 20px !important;
+    overflow-y: auto !important;
     line-height: 1.5 !important;
 }
 
 body.admin-bar.qrcv-validation-body {
-    height: calc(100vh - 32px) !important;
     min-height: calc(100vh - 32px) !important;
-    max-height: calc(100vh - 32px) !important;
 }
 
 /* Page Container & Layout */

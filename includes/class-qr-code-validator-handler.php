@@ -109,7 +109,7 @@ class QR_Code_Validator_Handler {
 		<html <?php language_attributes(); ?>>
 		<head>
 			<meta charset="<?php bloginfo( 'charset' ); ?>">
-			<meta name="viewport" content="width=device-width, initial-scale=initial-scale=1.0">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<title><?php esc_html_e( 'Verifikasi QR Code Dokumen', 'qr-code-validator' ); ?> | <?php echo esc_html( $site_name ); ?></title>
 			<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 			<link rel="stylesheet" href="<?php echo esc_url( $css_url ); ?>" type="text/css" media="all">
